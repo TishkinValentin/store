@@ -10,3 +10,8 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Basket)
+class AdminBaskets(admin.ModelAdmin):
+    pass
