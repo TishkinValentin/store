@@ -75,6 +75,7 @@ def profile(request):
         form = UserProfileForm(instance=request.user)
 
     context = {
+        'title': 'Store - личный кабинет',
         'form': form
     }
     return render(request, 'users/profile.html', context=context)
