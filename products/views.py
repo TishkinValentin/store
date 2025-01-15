@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from products.models import *
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -24,7 +25,7 @@ def products(request, category_id=None, page=1):
     context.update({'products': products})
     return render(request, 'products/products.html', context=context)
 
-
+@login_required
 def basket_add(request, product_id):
     product = Products.objects.get(id=product_id)
     basket_item = Basket.objects.filter(user=request.user, product=product)

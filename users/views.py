@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 from django.urls import reverse
 from users.forms import *
 from products.models import Basket
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -59,7 +60,7 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
 
-
+@login_required
 def profile(request):
     if request.method == 'POST':
         data = request.POST.dict()
